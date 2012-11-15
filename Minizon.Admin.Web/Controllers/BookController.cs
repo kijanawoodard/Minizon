@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Minizon.Admin.Web.Models;
 
 namespace Minizon.Admin.Web.Controllers
 {
-    public class BookController : Controller
+    public class BookController : BaseController
     {
         public ActionResult Index()
         {
-            return View(MvcApplication.Books);
+            var books = DocumentSession.Query<Book>().ToList();
+            return View(books);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var book = DocumentSession.Load<Book>(id);
+            return View(book);
         }
 
         public ActionResult Create()
@@ -26,8 +29,7 @@ namespace Minizon.Admin.Web.Controllers
         {
             try
             {
-                MvcApplication.Books.Add(book);
-
+                DocumentSession.Store(book);
                 return RedirectToAction("Index");
             }
             catch

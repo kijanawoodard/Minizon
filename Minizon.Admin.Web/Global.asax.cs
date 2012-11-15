@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Minizon.Admin.Web.Models;
+using Raven.Client.Document;
 
 namespace Minizon.Admin.Web
 {
@@ -13,23 +14,7 @@ namespace Minizon.Admin.Web
 
     public class MvcApplication : HttpApplication
     {
-        public static List<Book> Books = new List<Book>
-                                             {
-                                                 new Book
-                                                     {
-                                                         Author = "Kijana Woodard",
-                                                         ISBN = "1234",
-                                                         Name = "How to beat the crap out of them"
-                                                     }
-                                                 ,
-                                                 new Book
-                                                     {
-                                                         Author = "Sean Feldman",
-                                                         ISBN = "4321",
-                                                         Name = "Peace and harmony"
-                                                     }
-                                             };
-
+        public static DocumentStore DocumentStore;
 
         protected void Application_Start()
         {
@@ -39,6 +24,17 @@ namespace Minizon.Admin.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            WireRavenDb();
+        }
+
+        private static void WireRavenDb()
+        {
+            DocumentStore = new DocumentStore
+                                {
+                                    ConnectionStringName = "RavenDB"
+                                };
+            DocumentStore.Initialize();
         }
     }
 }

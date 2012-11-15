@@ -15,7 +15,9 @@ namespace Minizon.Admin.Web
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                // for a controller to handle RavenDB-like ids
+                // http://weblogs.asp.net/shijuvarghese/archive/2010/06/04/how-to-work-ravendb-id-with-asp-net-mvc-routes.aspx
+                url: "{controller}/{action}/{*id}",
                 defaults: new { controller = "Book", action = "Index", id = UrlParameter.Optional }
             );
         }

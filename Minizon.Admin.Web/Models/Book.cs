@@ -4,6 +4,7 @@ namespace Minizon.Admin.Web.Models
 {
     public class Book
     {
+        public string Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

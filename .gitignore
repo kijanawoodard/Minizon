@@ -1,6 +1,7 @@
 # Folders
-bin	
-obj
+bin/	
+bin*/
+obj/
 TestResults/
 _ReSharper.Minizon/
 packages/
