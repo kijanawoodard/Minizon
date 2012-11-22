@@ -10,6 +10,8 @@ namespace Minizon.Admin.Web.Models
         [Required]
         public string ISBN { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string Author { get; set; }   
+        [Required]
+        public double SuggestedPrice { get; set; }
     }
 }

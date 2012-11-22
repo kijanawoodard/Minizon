@@ -14,6 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Author)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuggestedPrice)
+        </th>
         <th></th>
     </tr>
 
@@ -27,6 +30,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.SuggestedPrice)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |

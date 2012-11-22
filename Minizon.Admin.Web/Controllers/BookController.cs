@@ -41,20 +41,22 @@ namespace Minizon.Admin.Web.Controllers
         //
         // GET: /Book/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var book = DocumentSession.Load<Book>(id);
+            return View(book);        
         }
 
         //
         // POST: /Book/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Book book)
         {
             try
             {
-                // TODO: Add update logic here
+                // issue a command to save a book
+                DocumentSession.Store(book);
 
                 return RedirectToAction("Index");
             }
