@@ -29,6 +29,7 @@ namespace Minizon.Admin.Web.Controllers
         {
             try
             {
+                // NSB command here
                 DocumentSession.Store(book);
                 return RedirectToAction("Index");
             }
