@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Minizon.Admin.Web.Models;
 
@@ -9,13 +8,13 @@ namespace Minizon.Admin.Web.Controllers
     {
         public ActionResult Index()
         {
-            var books = DocumentSession.Query<Book>().ToList();
+            var books = DocumentSession.Query<CatalogBook>().ToList();
             return View(books);
         }
 
         public ActionResult Details(string id)
         {
-            var book = DocumentSession.Load<Book>(id);
+            var book = DocumentSession.Load<CatalogBook>(id);
             return View(book);
         }
 
@@ -25,39 +24,39 @@ namespace Minizon.Admin.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Book book)
+        public ActionResult Create(CatalogBook catalogBook)
         {
             try
             {
                 // NSB command here
-                DocumentSession.Store(book);
+                DocumentSession.Store(catalogBook);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View(book);
+                return View(catalogBook);
             }
         }
 
         //
-        // GET: /Book/Edit/5
+        // GET: /CatalogBook/Edit/5
 
         public ActionResult Edit(string id)
         {
-            var book = DocumentSession.Load<Book>(id);
+            var book = DocumentSession.Load<CatalogBook>(id);
             return View(book);        
         }
 
         //
-        // POST: /Book/Edit/5
+        // POST: /CatalogBook/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Book book)
+        public ActionResult Edit(CatalogBook catalogBook)
         {
             try
             {
-                // issue a command to save a book
-                DocumentSession.Store(book);
+                // issue a command to save a CatalogBook
+                DocumentSession.Store(catalogBook);
 
                 return RedirectToAction("Index");
             }
@@ -68,7 +67,7 @@ namespace Minizon.Admin.Web.Controllers
         }
 
         //
-        // GET: /Book/Delete/5
+        // GET: /CatalogBook/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -76,7 +75,7 @@ namespace Minizon.Admin.Web.Controllers
         }
 
         //
-        // POST: /Book/Delete/5
+        // POST: /CatalogBook/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

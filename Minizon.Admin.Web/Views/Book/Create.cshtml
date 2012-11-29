@@ -1,10 +1,10 @@
-﻿@model Minizon.Admin.Web.Models.Book
+﻿@model Minizon.Admin.Web.Models.CatalogBook
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Book</legend>
+        <legend>CatalogBook</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
