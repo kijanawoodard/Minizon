@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Minizon.Admin.Web.Models;
+using Minizon.Catalog.Domain;
 using Minizon.Catalog.Messages;
 
 namespace Minizon.Admin.Web.Controllers
@@ -10,8 +11,15 @@ namespace Minizon.Admin.Web.Controllers
     {
         public ActionResult Index()
         {
-            var books = DocumentSession.Query<CatalogBookViewModel>().ToList();
-            return View(books);
+            var books = DocumentSession.Query<Book>().ToList();
+            return View(books.Select(book => new CatalogBookViewModel
+                                                 {
+                                                     Id = book.Id,
+                                                     ISBN = book.ISBN,
+                                                     Author = book.Author,
+                                                     Name = book.Name,
+                                                     SuggestedPrice = book.SuggestedPrice
+                                                 }).ToList());
         }
 
         public ActionResult Details(string id)

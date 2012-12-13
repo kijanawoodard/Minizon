@@ -4,8 +4,7 @@ namespace Minizon.Admin.Web.Models
 {
     public class CatalogBookViewModel
     {
-        //todo: investigate how to do it via conventions (Raven 2.0+)
-        public string Id { get { return "Books/" + ISBN; } }
+        public string Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
