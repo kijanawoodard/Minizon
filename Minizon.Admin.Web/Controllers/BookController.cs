@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Minizon.Admin.Web.Models;
+using Minizon.Catalog.Messages;
 
 namespace Minizon.Admin.Web.Controllers
 {
@@ -8,13 +10,13 @@ namespace Minizon.Admin.Web.Controllers
     {
         public ActionResult Index()
         {
-            var books = DocumentSession.Query<CatalogBook>().ToList();
+            var books = DocumentSession.Query<CatalogBookViewModel>().ToList();
             return View(books);
         }
 
         public ActionResult Details(string id)
         {
-            var book = DocumentSession.Load<CatalogBook>(id);
+            var book = DocumentSession.Load<CatalogBookViewModel>(id);
             return View(book);
         }
 
@@ -24,39 +26,32 @@ namespace Minizon.Admin.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CatalogBook catalogBook)
+        public ActionResult Create(AddNewBook addNewBookCommand)
         {
             try
             {
-                // NSB command here
-                DocumentSession.Store(catalogBook);
+                MvcApplication.Bus.Send(addNewBookCommand);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View(catalogBook);
+                return new ContentResult {Content = e.ToString()};
             }
         }
-
-        //
-        // GET: /CatalogBook/Edit/5
 
         public ActionResult Edit(string id)
         {
-            var book = DocumentSession.Load<CatalogBook>(id);
-            return View(book);        
+            var book = DocumentSession.Load<CatalogBookViewModel>(id);
+            return View(book);
         }
 
-        //
-        // POST: /CatalogBook/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(CatalogBook catalogBook)
+        public ActionResult Edit(CatalogBookViewModel catalogBookViewModel)
         {
             try
             {
                 // issue a command to save a CatalogBook
-                DocumentSession.Store(catalogBook);
+                DocumentSession.Store(catalogBookViewModel);
 
                 return RedirectToAction("Index");
             }
@@ -66,16 +61,10 @@ namespace Minizon.Admin.Web.Controllers
             }
         }
 
-        //
-        // GET: /CatalogBook/Delete/5
-
         public ActionResult Delete(int id)
         {
             return View();
         }
-
-        //
-        // POST: /CatalogBook/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

@@ -149,7 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CatalogBook.cs" />
+    <Compile Include="Models\CatalogBookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +248,10 @@
     <Content Include="Views\Book\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Minizon.Catalog.Messages\Minizon.Catalog.Messages.csproj">
+      <Project>{A940D21A-A81C-4237-8FF8-4F55E6E8F486}</Project>
+      <Name>Minizon.Catalog.Messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Minizon.Conventions\Minizon.Conventions.csproj">
       <Project>{0b186f4a-1589-4b41-9033-a8c15dfea1e8}</Project>
       <Name>Minizon.Conventions</Name>
