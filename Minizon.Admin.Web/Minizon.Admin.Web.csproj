@@ -144,12 +144,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Catalog\CatalogAreaRegistration.cs" />
+    <Compile Include="Areas\Catalog\Controllers\CatalogController.cs" />
+    <Compile Include="Areas\Pricing\PricingAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CatalogBookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +217,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Areas\Catalog\Views\Web.config" />
+    <Content Include="Areas\Pricing\Views\Web.config" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
@@ -230,6 +234,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\Views\Book\create.vm.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -252,10 +257,6 @@
       <Project>{A940D21A-A81C-4237-8FF8-4F55E6E8F486}</Project>
       <Name>Minizon.Catalog.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Minizon.Catalog\Minizon.Catalog.csproj">
-      <Project>{E2F8AFBE-3579-44C6-BD84-68C5E0214BB7}</Project>
-      <Name>Minizon.Catalog</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Minizon.Conventions\Minizon.Conventions.csproj">
       <Project>{0b186f4a-1589-4b41-9033-a8c15dfea1e8}</Project>
       <Name>Minizon.Conventions</Name>
@@ -263,6 +264,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Catalog\Models\" />
+    <Folder Include="Areas\Catalog\Views\Shared\" />
+    <Folder Include="Areas\Pricing\Controllers\" />
+    <Folder Include="Areas\Pricing\Models\" />
+    <Folder Include="Areas\Pricing\Views\Shared\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

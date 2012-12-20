@@ -1,48 +1,54 @@
-﻿@model Minizon.Admin.Web.Models.CatalogBookViewModel
+﻿@section scripts
+{
+    @Scripts.Render("~/Book/create")
+}
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
+<form data-bind="submit: post">
     <fieldset>
         <legend>CatalogBook</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            Name
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            <input type="text" required data-bind="value: name" />
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ISBN)
+            Isbn
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ISBN)
-            @Html.ValidationMessageFor(model => model.ISBN)
+            <input type="text" data-bind="value: isbn" required />
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Author)
+           Author
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Author)
-            @Html.ValidationMessageFor(model => model.Author)
+            <input type="text" data-bind="value: author" required />
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.SuggestedPrice)
+            Suggested price
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SuggestedPrice)
-            @Html.ValidationMessageFor(model => model.SuggestedPrice)
+            <input type="text" data-bind="value: suggestedPrice" required />
         </div>
-
+        
+        <div class="editor-label">
+            Our price
+        </div>
+        <div class="editor-field">
+            <input type="text" data-bind="value: ourPrice" required />
+        </div>
+        
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
-}
+</form>
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

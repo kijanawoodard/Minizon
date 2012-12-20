@@ -1,9 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Minizon.Admin.Web.Models;
-using Minizon.Catalog.Domain;
-using Minizon.Catalog.Messages;
 
 namespace Minizon.Admin.Web.Controllers
 {
@@ -11,21 +7,12 @@ namespace Minizon.Admin.Web.Controllers
     {
         public ActionResult Index()
         {
-            var books = DocumentSession.Query<Book>().ToList();
-            return View(books.Select(book => new CatalogBookViewModel
-                                                 {
-                                                     Id = book.Id,
-                                                     ISBN = book.ISBN,
-                                                     Author = book.Author,
-                                                     Name = book.Name,
-                                                     SuggestedPrice = book.SuggestedPrice
-                                                 }).ToList());
+            return View();
         }
 
         public ActionResult Details(string id)
         {
-            var book = DocumentSession.Load<CatalogBookViewModel>(id);
-            return View(book);
+            return View();
         }
 
         public ActionResult Create()
@@ -33,60 +20,14 @@ namespace Minizon.Admin.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Create(AddNewBook addNewBookCommand)
-        {
-            try
-            {
-                MvcApplication.Bus.Send(addNewBookCommand);
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                return new ContentResult {Content = e.ToString()};
-            }
-        }
-
         public ActionResult Edit(string id)
         {
-            var book = DocumentSession.Load<CatalogBookViewModel>(id);
-            return View(book);
-        }
-
-        [HttpPost]
-        public ActionResult Edit(CatalogBookViewModel catalogBookViewModel)
-        {
-            try
-            {
-                // issue a command to save a CatalogBook
-                DocumentSession.Store(catalogBookViewModel);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         public ActionResult Delete(int id)
         {
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Minizon.Admin.Web
 {
@@ -22,6 +21,11 @@ namespace Minizon.Admin.Web
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/Book/create").Include(
+                        "~/Scripts/knockout-{version}.js",
+                        "~/Scripts/Views/Book/create.vm.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
