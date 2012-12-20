@@ -1,4 +1,4 @@
-﻿namespace Minizon.Catalog.Messages
+﻿namespace Minizon.Catalog.Commands
 {
     public class AddNewBook
     {

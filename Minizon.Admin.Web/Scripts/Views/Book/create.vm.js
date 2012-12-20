@@ -7,13 +7,31 @@ $(function (App, $, ko) {
     "use strict";
 
     App.catalogService = {
-        createBook: function (book) {
+        createBook: function(book) {
             $.ajax({
                 url: '/api/catalog',
                 type: 'post',
                 dataType: 'json',
                 contentType: 'application/json',
                 data: book,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+    };
+    
+    App.pricingService = {
+        createPricing: function (pricing) {
+            $.ajax({
+                url: '/api/pricing',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: pricing,
                 success: function (response) {
                     console.log(response);
                 },
@@ -46,6 +64,7 @@ $(function (App, $, ko) {
             },
             post = function () {
                 App.catalogService.createBook(ko.toJSON(getCatalogPart()));
+                App.pricingService.createPricing(ko.toJSON(getPricingPart()));
             };
             
         return {

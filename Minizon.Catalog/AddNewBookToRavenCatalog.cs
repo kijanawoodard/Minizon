@@ -1,5 +1,5 @@
-﻿using Minizon.Catalog.Domain;
-using Minizon.Catalog.Messages;
+﻿using Minizon.Catalog.Commands;
+using Minizon.Catalog.Domain;
 using NServiceBus;
 using Raven.Client;
 

@@ -56,9 +56,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Minizon.Catalog.Messages\Minizon.Catalog.Messages.csproj">
+    <ProjectReference Include="..\Minizon.Catalog.Messages\Minizon.Catalog.Commands.csproj">
       <Project>{A940D21A-A81C-4237-8FF8-4F55E6E8F486}</Project>
-      <Name>Minizon.Catalog.Messages</Name>
+      <Name>Minizon.Catalog.Commands</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
