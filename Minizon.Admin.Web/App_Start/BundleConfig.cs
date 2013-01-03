@@ -7,6 +7,8 @@ namespace Minizon.Admin.Web
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+//            BundleTable.EnableOptimizations = true;
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -22,7 +24,7 @@ namespace Minizon.Admin.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/Book/create").Include(
+            bundles.Add(new ScriptBundle("~/BookBundle/create").Include(
                         "~/Scripts/knockout-{version}.js",
                         "~/Scripts/Views/Book/create.vm.js"));
 

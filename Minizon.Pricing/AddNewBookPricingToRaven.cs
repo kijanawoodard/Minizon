@@ -1,5 +1,5 @@
-﻿using Minizon.Pricing.Domain;
-using Minizon.Pricing.Messages;
+﻿using Minizon.Pricing.Commands;
+using Minizon.Pricing.Domain;
 using NServiceBus;
 using Raven.Client;
 

@@ -21,7 +21,8 @@ namespace Minizon.Backend
                 .MsmqTransport()
                 .UnicastBus()
                     .IsTransactional(true)
-                    .PurgeOnStartup(false);
+                    .PurgeOnStartup(false)
+                .DisableSecondLevelRetries();
         }
     }
 

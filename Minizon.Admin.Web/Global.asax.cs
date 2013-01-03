@@ -47,6 +47,7 @@ namespace Minizon.Admin.Web
                 .UnicastBus()
                     .IsTransactional(true)
                     .PurgeOnStartup(false)
+                .DisableSecondLevelRetries()
                 .SendOnly();
         }
 

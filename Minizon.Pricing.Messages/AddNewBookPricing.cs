@@ -1,4 +1,4 @@
-﻿namespace Minizon.Pricing.Messages
+﻿namespace Minizon.Pricing.Commands
 {
     public class AddNewBookPricing
     {

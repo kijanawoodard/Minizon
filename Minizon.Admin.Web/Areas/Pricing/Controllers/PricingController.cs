@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Minizon.Pricing.Commands;
 using Minizon.Pricing.Messages;
 
 namespace Minizon.Admin.Web.Areas.Pricing.Controllers
