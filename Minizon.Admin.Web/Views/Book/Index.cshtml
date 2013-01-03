@@ -1,45 +1,27 @@
-﻿@model IEnumerable<Minizon.Admin.Web.Models.CatalogBookViewModel>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Isbn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SuggestedPrice)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Isbn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            $@Html.DisplayFor(modelItem => item.SuggestedPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { Id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
-        </td>
-    </tr>
+﻿@section scripts
+{
+    @Scripts.Render("~/BookBundle/index")
 }
 
+<h1>Books (Catalog and Pricing)</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Suggested Price</th>
+            <th>Our Price</th>    
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-bind="text: isbn"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: author"></td>
+            <td data-bind="text: suggestedPrice"></td>
+            <td data-bind="text: ourPrice"></td>
+        </tr>
+    </tbody>
 </table>

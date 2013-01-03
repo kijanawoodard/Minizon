@@ -28,6 +28,11 @@ namespace Minizon.Admin.Web
                         "~/Scripts/knockout-{version}.js",
                         "~/Scripts/Views/Book/create.vm.js"));
 
+            bundles.Add(new ScriptBundle("~/BookBundle/index").Include(
+                        "~/Scripts/knockout-{version}.js",
+                        "~/Scripts/knockout.mapping-latest.js",
+                        "~/Scripts/Views/Book/index.vm.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 

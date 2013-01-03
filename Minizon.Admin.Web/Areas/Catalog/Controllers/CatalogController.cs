@@ -10,9 +10,13 @@ namespace Minizon.Admin.Web.Areas.Catalog.Controllers
     public class CatalogController : ApiController
     {
         // GET api/catalog
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            using (var documentSession = MvcApplication.DocumentStore.OpenSession())
+            {
+                //documentSession.Query<Book>()
+            }
+            return Request.CreateResponse<IEnumerable<string>>(HttpStatusCode.OK, null);
         }
 
         // GET api/catalog/5
