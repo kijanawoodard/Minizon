@@ -61,11 +61,11 @@
     </Reference>
     <Reference Include="Raven.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.2.0.2170-Unstable\lib\net40\Raven.Abstractions.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.2.0.2230\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Lightweight, Version=2.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.2.0.2170-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.2.0.2230\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -144,10 +144,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Catalog\CatalogAreaRegistration.cs" />
-    <Compile Include="Areas\Catalog\Controllers\CatalogController.cs" />
-    <Compile Include="Areas\Pricing\Controllers\PricingController.cs" />
-    <Compile Include="Areas\Pricing\PricingAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Global.asax.cs">
@@ -259,6 +255,10 @@
       <Project>{A940D21A-A81C-4237-8FF8-4F55E6E8F486}</Project>
       <Name>Minizon.Catalog.Commands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Minizon.Catalog\Minizon.Catalog.csproj">
+      <Project>{e2f8afbe-3579-44c6-bd84-68c5e0214bb7}</Project>
+      <Name>Minizon.Catalog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Minizon.Conventions\Minizon.Conventions.csproj">
       <Project>{0b186f4a-1589-4b41-9033-a8c15dfea1e8}</Project>
       <Name>Minizon.Conventions</Name>
@@ -266,6 +266,10 @@
     <ProjectReference Include="..\Minizon.Pricing.Messages\Minizon.Pricing.Commands.csproj">
       <Project>{F8CD6B26-3587-402A-B605-81693AEF4946}</Project>
       <Name>Minizon.Pricing.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Minizon.Pricing\Minizon.Pricing.csproj">
+      <Project>{b01ef93c-ea9a-40f6-9ba3-59474a01ad28}</Project>
+      <Name>Minizon.Pricing</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

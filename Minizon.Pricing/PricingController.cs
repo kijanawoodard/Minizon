@@ -1,20 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Minizon.Pricing.Commands;
-using Minizon.Pricing.Messages;
+using Minizon.Pricing.Domain;
+using NServiceBus;
+using Raven.Client;
 
-namespace Minizon.Admin.Web.Areas.Pricing.Controllers
+namespace Minizon.Pricing
 {
     public class PricingController : ApiController
     {
-        // GET api/pricing
-        public IEnumerable<string> Get()
+        private readonly IBus bus;
+        private readonly IDocumentSession documentSession;
+
+        public PricingController(IBus bus, IDocumentSession documentSession)
         {
-            return new string[] { "value1", "value2" };
+            this.bus = bus;
+            this.documentSession = documentSession;
+        }
+
+        // GET api/pricing
+        public IEnumerable<BookPricing> Get()
+        {
+            var pricings = documentSession.Query<BookPricing>();
+            return pricings;
         }
 
         // GET api/pricing/5
@@ -28,7 +39,7 @@ namespace Minizon.Admin.Web.Areas.Pricing.Controllers
         {
             try
             {
-                MvcApplication.Bus.Send<AddNewBookPricing>(x =>
+                bus.Send<AddNewBookPricing>(x =>
                 {
                     x.ISBN = viewModel.ISBN;
                     x.OurPrice = viewModel.OurPrice;

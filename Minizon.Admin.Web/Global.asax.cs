@@ -29,6 +29,8 @@ namespace Minizon.Admin.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ConfigureRavenDb();
+
+            WebApiConfig.RegisterDependenciesForServiceControllers(GlobalConfiguration.Configuration);
         }
 
         protected void Application_BeginRequest()

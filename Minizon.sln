@@ -23,9 +23,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minizon.Pricing", "Minizon.Pricing\Minizon.Pricing.csproj", "{B01EF93C-EA9A-40F6-9BA3-59474A01AD28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Minizon.Pricing Service", "Minizon.Pricing Service", "{40A6EF36-A869-4C06-A0C1-7B5923C167B5}"
-	ProjectSection(SolutionItems) = preProject
-		Minizon.Catalog\packages.config = Minizon.Catalog\packages.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minizon.Pricing.Commands", "Minizon.Pricing.Messages\Minizon.Pricing.Commands.csproj", "{F8CD6B26-3587-402A-B605-81693AEF4946}"
 EndProject
