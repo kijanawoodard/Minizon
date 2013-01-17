@@ -15,7 +15,7 @@
             <th>Our Price</th>    
         </tr>
     </thead>
-    <tbody>
+    <tbody data-bind="foreach: books">
         <tr>
             <td data-bind="text: isbn"></td>
             <td data-bind="text: name"></td>
@@ -25,3 +25,5 @@
         </tr>
     </tbody>
 </table>
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>

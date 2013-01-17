@@ -38,6 +38,7 @@ namespace Minizon.Admin.Web
 
         public object GetService(Type serviceType)
         {
+            // TODO: look for a proper dependency wiring for WebApi controller
             if (serviceType == typeof(Minizon.Catalog.CatalogController))
             {
                 return new Minizon.Catalog.CatalogController(MvcApplication.Bus, MvcApplication.DocumentStore.OpenSession());

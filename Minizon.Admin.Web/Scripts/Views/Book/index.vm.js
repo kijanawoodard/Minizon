@@ -25,15 +25,14 @@ $(function (App, $, ko) {
     };
     
     App.pricingService = {
-        createPricing: function (pricing) {
+        getAllPrices: function (callback) {
             $.ajax({
                 url: '/api/pricing',
-                type: 'post',
+                type: 'get',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: pricing,
                 success: function (response) {
-                    console.log(response);
+                    callback(response);
                 },
                 error: function (response) {
                     console.log(response);
@@ -42,8 +41,9 @@ $(function (App, $, ko) {
         }
     };
 
-    App.aBookViewModel = function (isbn, name, author, suggestedPrice, ourPrice) {
+    App.aBookViewModel = function (id, isbn, name, author, suggestedPrice, ourPrice) {
         var self = this;
+        self.id = id;
         self.isbn = ko.observable(isbn);
         self.name = ko.observable(name);
         self.author = ko.observable(author);
@@ -51,10 +51,24 @@ $(function (App, $, ko) {
         self.ourPrice = ko.observable(ourPrice);
     };
 
-    App.indexBookViewModel = function() {
-        var books;
+    App.indexBookViewModel = function () {
+        var books = ko.observableArray([]);
+
         App.catalogService.getAllBooks(function (data) {
-            books = ko.mapping.fromJS(data);
+            data.forEach(function (item) {
+                books.push(new App.aBookViewModel(item.id, item.iSBN, item.name, item.author, item.suggestedPrice, 0));
+            });
+        });
+        App.pricingService.getAllPrices(function (data) {
+            ko.utils.arrayForEach(data, function(item) {
+                console.log(item);
+            });
+            ko.utils.arrayForEach(data, function (item) {
+                var foundBook = ko.utils.arrayFirst(books(), function (candidate) {
+                    return candidate.id == item.bookId;
+                });
+                foundBook.ourPrice(item.price);
+            });
         });
             
         return {
