@@ -36,17 +36,11 @@ namespace Minizon.Catalog
         }
 
         // POST api/catalog
-        public HttpResponseMessage Post([FromBody]CatalogBookViewModel viewModel)
+        public HttpResponseMessage Post([FromBody]AddNewBook viewModel)
         {
             try
             {
-                bus.Send<AddNewBook>(x =>
-                {
-                    x.ISBN = viewModel.Isbn;
-                    x.Name = viewModel.Name;
-                    x.Author = viewModel.Author;
-                    x.SuggestedPrice = viewModel.SuggestedPrice;
-                });
+                bus.Send(viewModel);
                 return Request.CreateResponse(HttpStatusCode.Created, viewModel);
             }
             catch (Exception e)

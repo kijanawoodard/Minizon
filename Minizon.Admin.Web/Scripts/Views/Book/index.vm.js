@@ -14,6 +14,7 @@ $(function (App, $, ko) {
                 type: 'get',
                 dataType: 'json',
                 contentType: 'application/json',
+                async:false,
                 success: function(response) {
                     callback(response);
                 },
